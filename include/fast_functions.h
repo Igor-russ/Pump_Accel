@@ -1,5 +1,5 @@
-#ifndef __FAST_FUNCTIONS_H
-#define __FAST_FUNCTIONS_H
+#ifndef FAST_FUNCTIONS_H
+#define FAST_FUNCTIONS_H
 #include <Arduino.h>
 extern const int LCD_ADDR;
 //******** LCD fast functions******

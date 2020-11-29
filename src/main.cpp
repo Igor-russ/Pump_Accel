@@ -16,32 +16,7 @@
 #include <LiquidCrystal_I2C.h>
 #include <SoftwareSerial.h>
 #include <avr/pgmspace.h>
-//******************* Распределение пинов и определение констант ********************************
-enum
-{
-    BUTTON_PIN    = 3,
-    PLUS_PIN      = 4,
-    MINUS_PIN     = 5,
-    STEP_PIN      = 6,
-    DIR_PIN       = 7,
-    ENABLE_PIN    = 8,
-    START_PIN     = 9,
-    STOP_PIN      = 12,
-    BACKLIGHT_PIN = 10
-};
-enum
-{
-    MOTOR_STEPS         = 200, //Количество шагов двигателя за один оборот.
-    MICROSTEPS          = 16,  //Количество микрошагов на один шаг.
-    MAX_LITERS_PER_HOUR = 30
-};
-enum
-{
-    ENDLESS,
-    DOSATOR,
-    CARBONIZE,
-    CALIBRATE
-};                                                   //Режимы работы насоса.
+
 const int STEPS_PER_TURN = MOTOR_STEPS * MICROSTEPS; // Количество шагов для одного оборота двигателя.
 const int ONE_SECOND     = 1000;                     //Одна секунда в млсек.
 const int RPM_TO_SMOOTH  = 120;                      //RPM при котором будет плавный разгон двигателя.
@@ -361,8 +336,8 @@ void dynamicDataOnLcd()
         }
         break;
     case CARBONIZE:
-        if (!stepper.getState())
-        { //Мотор стоит
+        if (!stepper.getState()) //Мотор стоит
+        {
             static int8_t val;
             if ((val = readEncoder()))
             {
@@ -380,8 +355,8 @@ void dynamicDataOnLcd()
                 staticDataOnLcd();
             }
         }
-        else
-        { //Мотор крутится
+        else //Мотор крутится
+        {
             static char sc[] = "  ";
             static char mn[] = "  ";
             static char hr[] = "  ";

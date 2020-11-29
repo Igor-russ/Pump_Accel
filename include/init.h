@@ -1,5 +1,32 @@
-
-
+#ifndef INIT_H
+#define INIT_H
+//******************* Распределение пинов и определение констант ********************************
+enum
+{
+    BUTTON_PIN    = 3,
+    PLUS_PIN      = 4,
+    MINUS_PIN     = 5,
+    STEP_PIN      = 6,
+    DIR_PIN       = 7,
+    ENABLE_PIN    = 8,
+    START_PIN     = 9,
+    STOP_PIN      = 12,
+    BACKLIGHT_PIN = 10
+};
+enum
+{
+    MOTOR_STEPS         = 200, //Количество шагов двигателя за один оборот.
+    MICROSTEPS          = 16,  //Количество микрошагов на один шаг.
+    MAX_LITERS_PER_HOUR = 30
+};
+//Режимы работы насоса.
+enum
+{
+    ENDLESS,
+    DOSATOR,
+    CARBONIZE,
+    CALIBRATE
+};
 //**************** Прототипы функций ************************************************************
 int8_t readEncoder();               // Чтение показаний энкодера.
 void checkEvents();                 // Проверка разных событий.
@@ -17,3 +44,4 @@ void intToString(int x, char *str); //Преобразование целого 
 void invertString(char *str, int len);
 void intToString(int x, char *str, int d);
 //****************Конец прототипов функций*******************************************************
+#endif
